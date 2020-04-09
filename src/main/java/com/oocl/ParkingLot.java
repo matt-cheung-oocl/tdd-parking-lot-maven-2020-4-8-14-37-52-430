@@ -6,14 +6,7 @@ public class ParkingLot {
 	public static final int PARKING_LOT_CAPACITY = 10;
 	private HashMap<ParkingTicket, Car> parkingTicketCarHashMap = new HashMap<ParkingTicket, Car>();
 
-	public ParkingTicket park(Car car) throws DuplicatedCarException, NullCarException {
-		if (parkingTicketCarHashMap.containsValue(car)) {
-			throw new DuplicatedCarException("The car has been already parked.");
-		}
-		if (car == null) {
-			throw new NullCarException("Null car is not valid");
-		}
-
+	public ParkingTicket park(Car car) {
 		if (parkingTicketCarHashMap.size() >= PARKING_LOT_CAPACITY) {
 			return null;
 		}
@@ -22,7 +15,10 @@ public class ParkingLot {
 		return parkingTicket;
 	}
 
-	public Car fetch(ParkingTicket parkingTicket) {
+	public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException {
+		if (!parkingTicketCarHashMap.containsKey(parkingTicket)) {
+			throw new UnrecognizedParkingTicketException();
+		}
 		return this.parkingTicketCarHashMap.remove(parkingTicket);
 	}
 }

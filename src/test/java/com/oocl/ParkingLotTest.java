@@ -1,12 +1,14 @@
 package com.oocl;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class ParkingLotTest {
 
 	@Test
-	public void should_return_parking_ticket_when_give_car() throws DuplicatedCarException, NullCarException {
+	public void should_return_parking_ticket_when_give_car() {
 		ParkingLot parkingLot = new ParkingLot();
 		ParkingTicket parkingTicket = parkingLot.park(new Car());
 
@@ -14,7 +16,7 @@ public class ParkingLotTest {
 	}
 
 	@Test
-	public void should_return_correct_car_when_give_ticket() throws DuplicatedCarException, NullCarException {
+	public void should_return_correct_car_when_give_ticket() {
 		ParkingLot parkingLot = new ParkingLot();
 		Car car = new Car();
 		ParkingTicket parkingTicket = parkingLot.park(car);
@@ -32,7 +34,7 @@ public class ParkingLotTest {
 	}
 
 	@Test
-	public void should_return_null_when_give_used_ticket() throws DuplicatedCarException, NullCarException {
+	public void should_return_null_when_give_used_ticket() {
 		ParkingLot parkingLot = new ParkingLot();
 		Car car = new Car();
 		ParkingTicket parkingTicket = parkingLot.park(car);
@@ -44,7 +46,7 @@ public class ParkingLotTest {
 	}
 
 	@Test
-	public void should_return_null_when_parking_lot_is_full() throws DuplicatedCarException, NullCarException {
+	public void should_return_null_when_parking_lot_is_full() {
 		ParkingLot parkingLot = new ParkingLot();
 		for (int count = 0; count < 10; count++) {
 			parkingLot.park(new Car());
@@ -53,15 +55,4 @@ public class ParkingLotTest {
 
 		Assert.assertNull(eleventhParkingTicket);
 	}
-
-//	@Test
-//	public void should_return_exception_when_park_parked_car() throws DuplicatedCarException, NullCarException {
-//		ParkingLot parkingLot = new ParkingLot();
-//		Car car = new Car();
-//		parkingLot.park(car);
-//		ParkingTicket secondParkingTicket = parkingLot.park(car);
-//
-//		Assert.assertThrows();
-//	}
-
 }
