@@ -12,6 +12,6 @@ public class ParkingLot {
 	}
 
 	public Car fetch(ParkingTicket parkingTicket) {
-		return this.parkingTicketCarHashMap.get(parkingTicket);
+		return this.parkingTicketCarHashMap.remove(parkingTicket);
 	}
 }
