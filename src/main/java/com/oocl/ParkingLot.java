@@ -16,6 +16,9 @@ public class ParkingLot {
 	}
 
 	public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException {
+		if (parkingTicket == null) {
+			throw new NoParkingTicketException();
+		}
 		if (!parkingTicketCarHashMap.containsKey(parkingTicket)) {
 			throw new UnrecognizedParkingTicketException();
 		}

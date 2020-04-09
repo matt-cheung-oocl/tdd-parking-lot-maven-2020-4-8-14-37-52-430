@@ -17,8 +17,20 @@ public class ParkingBoyTest {
 		ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
 		Car car = new Car();
 
-		ParkingTicket parkingTicket = parkingBoy.park(car);
-
+		parkingBoy.park(car);
 		parkingBoy.fetch(new ParkingTicket());
+	}
+
+	@Test
+	public void should_return_exception_message_when_fetch_with_no_ticket() {
+		expectedException.expect(NoParkingTicketException.class);
+		expectedException.expectMessage("Please provide your parking ticket.");
+
+		ParkingLot parkingLot = new ParkingLot();
+		ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+		Car car = new Car();
+
+		parkingBoy.park(car);
+		parkingBoy.fetch(null);
 	}
 }
