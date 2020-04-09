@@ -6,9 +6,9 @@ public class ParkingLot {
 	public static final int PARKING_LOT_CAPACITY = 10;
 	private HashMap<ParkingTicket, Car> parkingTicketCarHashMap = new HashMap<ParkingTicket, Car>();
 
-	public ParkingTicket park(Car car) {
+	public ParkingTicket park(Car car) throws FullCapacityException {
 		if (parkingTicketCarHashMap.size() >= PARKING_LOT_CAPACITY) {
-			return null;
+			throw new FullCapacityException();
 		}
 		ParkingTicket parkingTicket = new ParkingTicket();
 		this.parkingTicketCarHashMap.put(parkingTicket, car);
