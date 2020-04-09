@@ -45,6 +45,16 @@ public class ParkingLotTest {
 		Assert.assertNull(fetchedCar);
 	}
 
+	@Test
+	public void should_return_null_parking_lot_is_full() {
+		ParkingLot parkingLot = new ParkingLot();
+		for (int count = 0; count < 10; count++) {
+			parkingLot.park(new Car());
+		}
 
+		ParkingTicket parkingTicket_11th = parkingLot.park(new Car());
+
+		Assert.assertNull(parkingTicket_11th);
+	}
 
 }
