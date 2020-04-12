@@ -8,12 +8,15 @@ public class SmartParkingBoy extends ParkingBoy {
 		super(parkingLots);
 	}
 
+	@Override
 	public ParkingTicket park(Car car) {
-		for (ParkingLot parkingLot : this.getParkingLots()) {
-			if (!parkingLot.isFull()) {
-				return parkingLot.park(car);
+		ParkingLot moreEmptyParkingLot = this.getParkingLots().get(0);
+		for (int counter = 1; counter < this.getParkingLots().size(); counter++) {
+			if (this.getParkingLots().get(counter).getCurrentCapacity() < moreEmptyParkingLot.getCurrentCapacity()) {
+				moreEmptyParkingLot = this.getParkingLots().get(counter);
 			}
 		}
-		return this.getParkingLots().get(0).park(car);
+		return moreEmptyParkingLot.park(car);
 	}
+
 }

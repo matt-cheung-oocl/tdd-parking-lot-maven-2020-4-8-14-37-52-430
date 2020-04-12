@@ -13,6 +13,10 @@ public class ParkingLot {
 		return false;
 	}
 
+	public int getCurrentCapacity() {
+		return parkingTicketCarHashMap.size();
+	}
+
 	public ParkingTicket park(Car car) throws FullCapacityException {
 		if (parkingTicketCarHashMap.size() >= PARKING_LOT_CAPACITY) {
 			throw new FullCapacityException();
