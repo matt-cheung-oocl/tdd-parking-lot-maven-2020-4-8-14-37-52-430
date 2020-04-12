@@ -75,4 +75,22 @@ public class ParkingBoyTest {
 		Assert.assertNotNull(parkingBoy.park(new Car()));
 	}
 
+
+	@Test
+	public void should_return_exception_message_when_park_car_to_both_two_full_parking_lot() {
+		expectedException.expect(FullCapacityException.class);
+		expectedException.expectMessage("Not enough position.");
+
+		ParkingLot parkingLot1 = new ParkingLot();
+		ParkingLot parkingLot2 = new ParkingLot();
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		parkingLots.add(parkingLot1);
+		parkingLots.add(parkingLot2);
+		ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+		for (int count = 0; count < 20; count++) {
+			parkingBoy.park(new Car());
+		}
+		parkingBoy.park(new Car());
+	}
 }
