@@ -1,8 +1,13 @@
 package com.oocl;
 
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ParkingBoyTest {
 	@Rule
@@ -14,7 +19,9 @@ public class ParkingBoyTest {
 		expectedException.expectMessage("Unrecognized parking ticket.");
 
 		ParkingLot parkingLot = new ParkingLot();
-		ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		parkingLots.add(parkingLot);
+		ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 		Car car = new Car();
 
 		parkingBoy.park(car);
@@ -27,7 +34,9 @@ public class ParkingBoyTest {
 		expectedException.expectMessage("Please provide your parking ticket.");
 
 		ParkingLot parkingLot = new ParkingLot();
-		ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		parkingLots.add(parkingLot);
+		ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 		Car car = new Car();
 
 		parkingBoy.park(car);
@@ -40,11 +49,30 @@ public class ParkingBoyTest {
 		expectedException.expectMessage("Not enough position.");
 
 		ParkingLot parkingLot = new ParkingLot();
-		ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		parkingLots.add(parkingLot);
+		ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
 
 		for (int count = 0; count < 10; count++) {
 			parkingLot.park(new Car());
 		}
 		parkingBoy.park(new Car());
 	}
+
+	@Test
+	public void should_still_return_ticket_when_1st_parkingLot_is_full() {
+
+		ParkingLot parkingLot1 = new ParkingLot();
+		ParkingLot parkingLot2 = new ParkingLot();
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		parkingLots.add(parkingLot1);
+		parkingLots.add(parkingLot2);
+		ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+		for (int count = 0; count < 10; count++) {
+			parkingBoy.park(new Car());
+		}
+		Assert.assertNotNull(parkingBoy.park(new Car()));
+	}
+
 }
