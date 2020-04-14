@@ -1,5 +1,12 @@
 package com.oocl;
 
+import com.oocl.exception.FullCapacityException;
+import com.oocl.exception.NoParkingTicketException;
+import com.oocl.exception.UnrecognizedParkingTicketException;
+import com.oocl.model.Car;
+import com.oocl.model.parkingboy.ParkingBoy;
+import com.oocl.model.ParkingLot;
+import com.oocl.model.ParkingTicket;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

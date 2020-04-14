@@ -1,10 +1,10 @@
-package com.oocl;
+package com.oocl.model;
 
 import java.util.HashMap;
 
 public class ParkingLot {
 
-	static final int PARKING_LOT_CAPACITY = 10;
+	public static final int PARKING_LOT_CAPACITY = 10;
 	private HashMap<ParkingTicket, Car> parkingTicketCarHashMap = new HashMap<ParkingTicket, Car>();
 
 	public boolean isFull() { return parkingTicketCarHashMap.size() == PARKING_LOT_CAPACITY; }

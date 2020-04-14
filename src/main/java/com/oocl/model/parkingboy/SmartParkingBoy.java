@@ -1,4 +1,9 @@
-package com.oocl;
+package com.oocl.model.parkingboy;
+
+import com.oocl.exception.FullCapacityException;
+import com.oocl.model.Car;
+import com.oocl.model.ParkingLot;
+import com.oocl.model.ParkingTicket;
 
 import java.util.List;
 

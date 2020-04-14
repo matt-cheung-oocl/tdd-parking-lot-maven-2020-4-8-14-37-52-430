@@ -1,4 +1,4 @@
-package com.oocl;
+package com.oocl.model;
 
 public class Car {
 }

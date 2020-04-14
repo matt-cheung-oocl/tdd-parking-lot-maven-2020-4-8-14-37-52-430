@@ -1,5 +1,9 @@
 package com.oocl;
 
+import com.oocl.model.Car;
+import com.oocl.model.parkingboy.ParkingBoy;
+import com.oocl.model.ParkingLot;
+import com.oocl.model.parkingboy.SuperSmartParkingBoy;
 import org.junit.Assert;
 import org.junit.Test;
 
