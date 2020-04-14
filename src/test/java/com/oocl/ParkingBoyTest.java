@@ -92,4 +92,23 @@ public class ParkingBoyTest {
 		}
 		parkingBoy.park(new Car());
 	}
+
+	@Test
+	public void should_return_tikcet_when_park_car_to_2nd_parking_lot() {
+
+		ParkingLot parkingLot1 = new ParkingLot();
+		ParkingLot parkingLot2 = new ParkingLot();
+		List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
+		parkingLots.add(parkingLot1);
+		parkingLots.add(parkingLot2);
+		ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+		for (int count = 0; count < 10; count++) {
+			parkingBoy.park(new Car());
+		}
+		Car targetCar = new Car();
+		ParkingTicket ticket = parkingBoy.park(targetCar);
+		Car fetchedCar = parkingBoy.fetch(ticket);
+		Assert.assertEquals(targetCar, fetchedCar);
+	}
 }
