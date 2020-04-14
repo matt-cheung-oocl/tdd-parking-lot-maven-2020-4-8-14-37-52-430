@@ -13,10 +13,10 @@ public class SmartParkingBoy extends ParkingBoy {
 
 	@Override
 	public ParkingTicket park(Car car) throws FullCapacityException {
-		ParkingLot moreEmptyParkingLot = this.getParkingLots().get(0);
-		for (int counter = 1; counter < this.getParkingLots().size(); counter++) {
-			if (this.getParkingLots().get(counter).getCurrentCapacity() < moreEmptyParkingLot.getCurrentCapacity()) {
-				moreEmptyParkingLot = this.getParkingLots().get(counter);
+		ParkingLot moreEmptyParkingLot = this.parkingLots.get(0);
+		for (int counter = 1; counter < this.parkingLots.size(); counter++) {
+			if (this.parkingLots.get(counter).getCurrentCapacity() < moreEmptyParkingLot.getCurrentCapacity()) {
+				moreEmptyParkingLot = this.parkingLots.get(counter);
 			}
 		}
 		if (moreEmptyParkingLot.getCurrentCapacity() == ParkingLot.PARKING_LOT_CAPACITY) {

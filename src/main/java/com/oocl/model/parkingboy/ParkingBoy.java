@@ -11,9 +11,7 @@ import java.util.List;
 
 public class ParkingBoy {
 
-	private List<ParkingLot> parkingLots;
-
-	public List<ParkingLot> getParkingLots() { return parkingLots; }
+	List<ParkingLot> parkingLots;
 
 	public ParkingBoy(List<ParkingLot> parkingLots) { this.parkingLots = parkingLots; }
 
@@ -30,8 +28,8 @@ public class ParkingBoy {
 		if (parkingTicket == null) {
 			throw new NoParkingTicketException();
 		}
-		for (int counter = 1; counter < this.getParkingLots().size(); counter++) {
-			if (this.getParkingLots().get(counter).isContainTicket(parkingTicket)) {
+		for (int counter = 1; counter < parkingLots.size(); counter++) {
+			if (parkingLots.get(counter).isContainTicket(parkingTicket)) {
 				return this.parkingLots.get(counter).fetch(parkingTicket);
 			}
 		}
