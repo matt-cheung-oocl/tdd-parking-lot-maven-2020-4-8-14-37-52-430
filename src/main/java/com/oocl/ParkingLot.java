@@ -13,6 +13,13 @@ public class ParkingLot {
 		return false;
 	}
 
+	public boolean isContainTicket(ParkingTicket parkingTicket) {
+		if (parkingTicketCarHashMap.containsKey(parkingTicket)) {
+			return true;
+		}
+		return false;
+	}
+
 	public int getCurrentCapacity() {
 		return parkingTicketCarHashMap.size();
 	}

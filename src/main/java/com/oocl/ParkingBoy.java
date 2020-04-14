@@ -23,6 +23,11 @@ public class ParkingBoy {
 	}
 
 	public Car fetch(ParkingTicket parkingTicket) {
+		for (int counter = 1; counter < this.getParkingLots().size(); counter++) {
+			if (this.getParkingLots().get(counter).isContainTicket(parkingTicket)) {
+				return this.parkingLots.get(counter).fetch(parkingTicket);
+			}
+		}
 		return this.parkingLots.get(0).fetch(parkingTicket);
 	}
 }
