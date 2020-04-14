@@ -7,17 +7,11 @@ public class ParkingLot {
 	private HashMap<ParkingTicket, Car> parkingTicketCarHashMap = new HashMap<ParkingTicket, Car>();
 
 	public boolean isFull() {
-		if (parkingTicketCarHashMap.size() == PARKING_LOT_CAPACITY) {
-			return true;
-		}
-		return false;
+		return parkingTicketCarHashMap.size() == PARKING_LOT_CAPACITY;
 	}
 
 	public boolean isContainTicket(ParkingTicket parkingTicket) {
-		if (parkingTicketCarHashMap.containsKey(parkingTicket)) {
-			return true;
-		}
-		return false;
+		return parkingTicketCarHashMap.containsKey(parkingTicket);
 	}
 
 	public int getCurrentCapacity() {

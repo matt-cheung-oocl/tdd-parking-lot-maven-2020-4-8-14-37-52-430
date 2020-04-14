@@ -94,7 +94,7 @@ public class ParkingBoyTest {
 	}
 
 	@Test
-	public void should_return_tikcet_when_park_car_to_2nd_parking_lot() {
+	public void should_return_ticket_when_park_car_to_2nd_parking_lot() {
 
 		ParkingLot parkingLot1 = new ParkingLot();
 		ParkingLot parkingLot2 = new ParkingLot();
