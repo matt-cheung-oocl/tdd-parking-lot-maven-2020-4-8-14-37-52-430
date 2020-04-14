@@ -3,6 +3,7 @@ package com.oocl;
 import java.util.List;
 
 public class ParkingBoy {
+
 	private List<ParkingLot> parkingLots;
 
 	public List<ParkingLot> getParkingLots() { return parkingLots; }

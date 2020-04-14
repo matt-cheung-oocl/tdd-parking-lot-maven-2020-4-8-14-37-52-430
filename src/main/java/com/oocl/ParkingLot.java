@@ -3,6 +3,7 @@ package com.oocl;
 import java.util.HashMap;
 
 public class ParkingLot {
+
 	static final int PARKING_LOT_CAPACITY = 10;
 	private HashMap<ParkingTicket, Car> parkingTicketCarHashMap = new HashMap<ParkingTicket, Car>();
 
