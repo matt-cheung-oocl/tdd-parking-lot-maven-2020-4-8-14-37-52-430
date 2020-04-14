@@ -5,13 +5,9 @@ import java.util.List;
 public class ParkingBoy {
 	private List<ParkingLot> parkingLots;
 
-	public List<ParkingLot> getParkingLots() {
-		return parkingLots;
-	}
+	public List<ParkingLot> getParkingLots() { return parkingLots; }
 
-	public ParkingBoy(List<ParkingLot> parkingLots) {
-		this.parkingLots = parkingLots;
-	}
+	public ParkingBoy(List<ParkingLot> parkingLots) { this.parkingLots = parkingLots; }
 
 	public ParkingTicket park(Car car) throws FullCapacityException {
 		for (ParkingLot parkingLot : this.parkingLots) {
@@ -26,7 +22,6 @@ public class ParkingBoy {
 		if (parkingTicket == null) {
 			throw new NoParkingTicketException();
 		}
-
 		for (int counter = 1; counter < this.getParkingLots().size(); counter++) {
 			if (this.getParkingLots().get(counter).isContainTicket(parkingTicket)) {
 				return this.parkingLots.get(counter).fetch(parkingTicket);

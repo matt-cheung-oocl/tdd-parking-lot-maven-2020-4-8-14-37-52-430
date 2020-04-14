@@ -4,9 +4,7 @@ import java.util.List;
 
 public class SuperSmartParkingBoy extends ParkingBoy {
 
-	public SuperSmartParkingBoy(List<ParkingLot> parkingLots) {
-		super(parkingLots);
-	}
+	public SuperSmartParkingBoy(List<ParkingLot> parkingLots) { super(parkingLots); }
 
 	@Override
 	public ParkingTicket park(Car car) throws FullCapacityException {
