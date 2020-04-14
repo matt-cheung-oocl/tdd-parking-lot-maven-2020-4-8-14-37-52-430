@@ -13,21 +13,25 @@ public class ParkingBoy {
 		this.parkingLots = parkingLots;
 	}
 
-	public ParkingTicket park(Car car) {
+	public ParkingTicket park(Car car) throws FullCapacityException {
 		for (ParkingLot parkingLot : this.parkingLots) {
 			if (!parkingLot.isFull()) {
 				return parkingLot.park(car);
 			}
 		}
-		return parkingLots.get(0).park(car);
+		throw new FullCapacityException();
 	}
 
-	public Car fetch(ParkingTicket parkingTicket) {
+	public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException, NoParkingTicketException {
+		if (parkingTicket == null) {
+			throw new NoParkingTicketException();
+		}
+
 		for (int counter = 1; counter < this.getParkingLots().size(); counter++) {
 			if (this.getParkingLots().get(counter).isContainTicket(parkingTicket)) {
 				return this.parkingLots.get(counter).fetch(parkingTicket);
 			}
 		}
-		return this.parkingLots.get(0).fetch(parkingTicket);
+		throw new UnrecognizedParkingTicketException();
 	}
 }

@@ -19,25 +19,19 @@ public class ParkingLot {
 	}
 
 	public double getCurrentAvailablePositionRate() {
-		return ((double)(PARKING_LOT_CAPACITY - this.getCurrentCapacity()) / PARKING_LOT_CAPACITY);
+		return ((double) (PARKING_LOT_CAPACITY - this.getCurrentCapacity()) / PARKING_LOT_CAPACITY);
 	}
 
-	public ParkingTicket park(Car car) throws FullCapacityException {
-		if (parkingTicketCarHashMap.size() >= PARKING_LOT_CAPACITY) {
-			throw new FullCapacityException();
+	public ParkingTicket park(Car car) {
+		if (this.isFull()) {
+			return null;
 		}
 		ParkingTicket parkingTicket = new ParkingTicket();
 		this.parkingTicketCarHashMap.put(parkingTicket, car);
 		return parkingTicket;
 	}
 
-	public Car fetch(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException {
-		if (parkingTicket == null) {
-			throw new NoParkingTicketException();
-		}
-		if (!parkingTicketCarHashMap.containsKey(parkingTicket)) {
-			throw new UnrecognizedParkingTicketException();
-		}
+	public Car fetch(ParkingTicket parkingTicket)  {
 		return this.parkingTicketCarHashMap.remove(parkingTicket);
 	}
 }
